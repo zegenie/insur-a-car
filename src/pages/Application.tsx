@@ -1,9 +1,9 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getEmail, getFirstName, getLastName, getSsno} from "../store/modules/person/person.selectors";
+import {getEmail, getFirstName, getLastName, getPerson, getSsno} from "../store/modules/person/person.selectors";
 
 import {setEmail, setFirstName, setLastName, setSsno} from "../store/modules/person/person.actions";
-import {getBonusLevel, getRegistrationNumber} from "../store/modules/vehicle/vehicle.selectors";
+import {getBonusLevel, getRegistrationNumber, getVehicle} from "../store/modules/vehicle/vehicle.selectors";
 import {useTranslation, withTranslation, WithTranslation} from "react-i18next";
 
 import {Button, Col, Container, Form, Row} from 'react-bootstrap';
@@ -13,10 +13,12 @@ import {setBonusLevel, setRegistrationNumber} from "../store/modules/vehicle/veh
 
 import validator from 'validator';
 import VehicleBonusSelector from "../components/VehicleBonusSelector";
+import {createApplication} from "../lib/backend";
 
 const Application: React.FC<WithTranslation> = () => {
     const { t } = useTranslation();
     const [isSubmitting, setSubmitting] = useState<boolean>(false);
+    const [isErrorSubmitting, setErrorSubmitting] = useState<boolean>(false);
 
     const firstName = useSelector(getFirstName);
     const lastName = useSelector(getLastName);
@@ -24,6 +26,9 @@ const Application: React.FC<WithTranslation> = () => {
     const email = useSelector(getEmail);
     const registrationNumber = useSelector(getRegistrationNumber);
     const bonusLevel = useSelector(getBonusLevel);
+
+    const person = useSelector(getPerson);
+    const vehicle = useSelector(getVehicle);
 
     const dispatch = useDispatch();
 
@@ -57,6 +62,15 @@ const Application: React.FC<WithTranslation> = () => {
 
         if (canSubmit()) {
             setSubmitting(true);
+            createApplication({
+                person,
+                vehicle
+            }).then(() => {
+            }).catch(() => {
+                setErrorSubmitting(true);
+            }).finally(() => {
+                setSubmitting(false);
+            })
         }
     }
 
@@ -154,6 +168,16 @@ const Application: React.FC<WithTranslation> = () => {
                         </Button>
                     </Col>
                 </Row>
+                {(isErrorSubmitting && (
+                    <Row>
+                        <Form.Group>
+                            <Form.Text className="error">
+                                <FontAwesomeIcon icon="exclamation-triangle" />
+                                <span>{ t('application.form.error') }</span>
+                            </Form.Text>
+                        </Form.Group>
+                    </Row>
+                ))}
             </Form>
             <Row>
                 Name: {`${firstName} ${lastName}`}

@@ -10,9 +10,9 @@ import { Provider } from 'react-redux';
 import { store } from "./store";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCircle, faChevronDown, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faCircle, faExclamationTriangle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faCircle, faChevronDown, faSpinner);
+library.add(faChevronDown, faCircle, faExclamationTriangle, faSpinner);
 
 ReactDOM.render(
   <React.StrictMode>

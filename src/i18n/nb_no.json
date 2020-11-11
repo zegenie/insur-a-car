@@ -16,5 +16,6 @@
   "application.person.ssno.error": "Ugyldig fødselsnummer",
   "application.person.email.label": "E-post",
   "application.person.email.error": "Skriv inn en gyldig e-postadresse",
-  "application.form.submit": "Opprett avtale"
+  "application.form.submit": "Opprett avtale",
+  "application.form.error": "Det oppstod en feil under oppretting av avtale. Prøv igjen senere."
 }
