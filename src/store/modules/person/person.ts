@@ -4,4 +4,3 @@ export interface Person {
     ssno: string;
     email: string;
 };
-

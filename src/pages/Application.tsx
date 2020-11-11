@@ -14,11 +14,13 @@ import {setBonusLevel, setRegistrationNumber} from "../store/modules/vehicle/veh
 import validator from 'validator';
 import VehicleBonusSelector from "../components/VehicleBonusSelector";
 import {createApplication} from "../lib/backend";
+import QuoteCreatedPopup from "../components/QuoteCreatedPopup";
 
 const Application: React.FC<WithTranslation> = () => {
     const { t } = useTranslation();
     const [isSubmitting, setSubmitting] = useState<boolean>(false);
     const [isErrorSubmitting, setErrorSubmitting] = useState<boolean>(false);
+    const [showPopup, setShowPopup] = useState<boolean>(false);
 
     const firstName = useSelector(getFirstName);
     const lastName = useSelector(getLastName);
@@ -67,6 +69,7 @@ const Application: React.FC<WithTranslation> = () => {
                 person,
                 vehicle
             }).then(() => {
+                setShowPopup(true);
             }).catch(() => {
                 setErrorSubmitting(true);
             }).finally(() => {
@@ -93,6 +96,7 @@ const Application: React.FC<WithTranslation> = () => {
 
     return (
         <Container className="insurance-application">
+            <QuoteCreatedPopup show={showPopup} />
             <Row className="justify-content-md-center">
                 <h1>{ t('application.header') }</h1>
             </Row>
@@ -180,9 +184,6 @@ const Application: React.FC<WithTranslation> = () => {
                     </Row>
                 ))}
             </Form>
-            <Row>
-                Name: {`${firstName} ${lastName}`}
-            </Row>
         </Container>
     )
 };
