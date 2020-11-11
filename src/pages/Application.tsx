@@ -61,6 +61,7 @@ const Application: React.FC<WithTranslation> = () => {
         e.stopPropagation();
 
         if (canSubmit()) {
+            setErrorSubmitting(false);
             setSubmitting(true);
             createApplication({
                 person,
