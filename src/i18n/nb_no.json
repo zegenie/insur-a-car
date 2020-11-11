@@ -1,0 +1,20 @@
+{
+  "application.header": "Kjøp bilforsikring",
+  "application.introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "application.vehicle.registrationNumber.label": "Bilens registreringsnummer",
+  "application.vehicle.registrationNumber.error": "Registreringsnummeret må være på format XX12345",
+  "application.vehicle.bonusLevel.label": "Din bonus",
+  "application.vehicle.bonusLevel.dropdown": "Velg din bonus",
+  "application.vehicle.bonusLevel.75plus1": "75% (1 år)",
+  "application.vehicle.bonusLevel.75plus2": "75% (2 år)",
+  "application.vehicle.bonusLevel.75plus3": "75% (3 år)",
+  "application.vehicle.bonusLevel.75plus4": "75% (4 år)",
+  "application.vehicle.bonusLevel.75plus5": "75% (5 år)",
+  "application.person.firstName.label": "Fornavn",
+  "application.person.lastName.label": "Etternavn",
+  "application.person.ssno.label": "Fødselsnummer",
+  "application.person.ssno.error": "Ugyldig fødselsnummer",
+  "application.person.email.label": "E-post",
+  "application.person.email.error": "Skriv inn en gyldig e-postadresse",
+  "application.form.submit": "Opprett avtale"
+}
